@@ -12,16 +12,12 @@ Composer
 Instalação
 Clonar o repositório:
 
-bash
-Copy code
 git clone git@github.com:Foxitty/CRUD_API.git
 
 Configurar o ambiente:
 
 Copie o arquivo .env.example para .env e configure-o com suas credenciais de banco de dados:
 
-bash
-Copy code
 cp .env.example .env
 Configure as variáveis de ambiente necessárias no arquivo .env (como banco de dados, URL base, etc).
 
@@ -29,8 +25,6 @@ Executar as migrações do banco de dados:
 
 Execute as migrações para criar as tabelas necessárias no banco de dados:
 
-bash
-Copy code
 php spark migrate
 Isso criará as tabelas pedidos, clientes, produtos e suas respectivas estruturas no banco de dados configurado.
 
@@ -38,8 +32,6 @@ Iniciar o servidor de desenvolvimento:
 
 Use o comando abaixo para iniciar o servidor de desenvolvimento do CodeIgniter:
 
-bash
-Copy code
 php spark serve
 
 Uso
