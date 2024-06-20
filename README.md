@@ -46,6 +46,8 @@ php spark serve
 
 **A API possui os seguintes endpoints principais:**
 
+**Clientes**
+
 * GET /clientes: Retorna todos os clientes cadastrados.
 
 * POST /cliente/novo: Cria um novo cliente.
@@ -59,6 +61,9 @@ php spark serve
 *Parâmetros de Paginação e Filtro*
 * GET /clientes?limit={limit}&page={page}&nome_razao_social={nome_razao_social}: Retorna pedidos paginados com limite e página especificados. Você pode opcionalmente filtrar por cpf_cnpj ou nome_razao_social.
 
+
+**Produtos**
+
 * GET /produtos: Retorna todos os produtos cadastrados.
 
 * POST /produto/novo: Cria um novo produto.
@@ -71,6 +76,9 @@ php spark serve
 
 *Parâmetros de Paginação e Filtro*
 * GET /produtos?limit={limit}&page={page}&nome={nome}: Retorna pedidos paginados com limite e página especificados. Você pode opcionalmente filtrar por nome ou preco.
+
+
+**Pedidos**
 
 * GET /pedidos: Retorna todos os pedidos cadastrados.
 
