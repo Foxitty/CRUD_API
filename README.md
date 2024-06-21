@@ -1,9 +1,3 @@
-
-
-
-
-
-
 Sistema de Pedidos com CRUD (CodeIgniter 4)
 ===
 
@@ -19,6 +13,12 @@ MySQL
 **Clonar o repositório:**
 
 git clone git@github.com:Foxitty/CRUD_API.git
+
+**Instale as Dependências**
+
+Certifique-se de ter as dependências necessárias instaladas via Composer:
+
+composer require firebase/php-jwt
 
 **Configurar o ambiente:**
 
@@ -40,6 +40,49 @@ Use o comando abaixo para iniciar o servidor de desenvolvimento do CodeIgniter:
 
 php spark serve
 
+## Testando com Postman
+
+**Instale o Postman**
+
+Se ainda não tiver, instale o Postman em seu ambiente de desenvolvimento.
+
+**Configuração de Requisições no Postman**
+
+* Abra o Postman e crie uma nova requisição para o endpoint de login.
+
+* Método: POST
+
+* URL: http://seu_servidor/api/login exemplo: http://localhost:8080/api/login
+
+Na aba Body: Selecione raw e escolha JSON (application/json). Insira as credenciais válidas para o login:
+
+{
+    "email": "teste_auth@gmail.com",
+    "password": "12345"
+}
+
+Envie a requisição. O servidor deve retornar um JSON contendo o token JWT:
+
+{
+    "token": "seu_token_jwt_aqui"
+}
+
+Esse token tem validade de 1 dia. Use esse Token no passo abaixo.
+
+## Autenticando Requisições Protegidas
+
+Para acessar rotas protegidas que requerem autenticação, adicione o token JWT obtido como um cabeçalho Authorization na requisição .
+
+* Crie uma nova requisição para uma rota dos endpoints abaixo.
+
+* Método: GET, POST, ou outro conforme a sua implementação.
+
+* URL: http://seu_servidor/api/rota_protegida exemplo: http://localhost:8080/api/produtos
+
+* Em Authorization, depois Auth Token selecione Bearer Token e em token, cole o token gerado acima.
+
+Certifique-se de configurar corretamente o JWT_SECRET no seu arquivo .env. Pode o JWT_SECRET estático do .env_example
+
 ## Uso
 
 ## Endpoints Disponíveis
@@ -48,47 +91,47 @@ php spark serve
 
 **Clientes**
 
-* GET /clientes: Retorna todos os clientes cadastrados.
+* GET /api/clientes: Retorna todos os clientes cadastrados.
 
-* POST /cliente/novo: Cria um novo cliente.
+* POST /api/cliente/novo: Cria um novo cliente. Campos: cpf_cnpj, nome_razao_social, status é opcional pois o default é 1 (1 = ativo e 0 = inativo).
 
-* GET /cliente/{id}: Retorna um cliente específico pelo ID.
+* GET /api/cliente/{id}: Retorna um cliente específico pelo ID.
 
-* PUT /cliente/{id}/editar: Atualiza um cliente existente pelo ID.
+* PUT /api/cliente/{id}/editar: Atualiza um cliente existente pelo ID. Campos: cpf_cnpj, nome_razao_social, status é opcional pois o default é 1 (1 = ativo e 0 = inativo).
 
-* PUT /cliente/{id}/deletar: Faz a remoção lógica de um cliente pelo ID.
+* PUT /api/cliente/{id}/deletar: Faz a remoção lógica de um cliente pelo ID colocando status = 0 (inativo).
 
 *Parâmetros de Paginação e Filtro*
-* GET /clientes?limit={limit}&page={page}&nome_razao_social={nome_razao_social}: Retorna pedidos paginados com limite e página especificados. Você pode opcionalmente filtrar por cpf_cnpj ou nome_razao_social.
+* GET /api/clientes?limit={limit}&page={page}&nome_razao_social={nome_razao_social}: Retorna pedidos paginados com limite e página especificados. Você pode opcionalmente filtrar por cpf_cnpj e/ou nome_razao_social.
 
 
 **Produtos**
 
-* GET /produtos: Retorna todos os produtos cadastrados.
+* GET /api/produtos: Retorna todos os produtos cadastrados.
 
-* POST /produto/novo: Cria um novo produto.
+* POST /api/produto/novo: Cria um novo produto. Campos: nome, preco, status é opcional pois o default é 1 (1 = ativo e 0 = inativo).
 
-* GET /produto/{id}: Retorna um produto específico pelo ID.
+* GET /api/produto/{id}: Retorna um produto específico pelo ID.
 
-* PUT /produto/{id}/editar: Atualiza um produto existente pelo ID.
+* PUT /api/produto/{id}/editar: Atualiza um produto existente pelo ID. Campos: nome, preco, status é opcional pois o default é 1 (1 = ativo e 0 = inativo).
 
-* PUT /produto/{id}/deletar: Remove um produto pelo ID.
+* PUT /api/produto/{id}/deletar: Faz a remoção lógica de um produto pelo ID colocando status = 0 (inativo).
 
 *Parâmetros de Paginação e Filtro*
-* GET /produtos?limit={limit}&page={page}&nome={nome}: Retorna pedidos paginados com limite e página especificados. Você pode opcionalmente filtrar por nome ou preco.
+* GET /api/produtos?limit={limit}&page={page}&nome={nome}: Retorna pedidos paginados com limite e página especificados. Você pode opcionalmente filtrar por nome e/ou preco.
 
 
 **Pedidos**
 
-* GET /pedidos: Retorna todos os pedidos cadastrados.
+* GET /api/pedidos: Retorna todos os pedidos cadastrados.
 
-* POST /pedido/novo: Cria um novo pedido.
+* POST /api/pedido/novo: Cria um novo pedido. Campos: cliente_id, produto_id, status é opcional pois o default é 0 (0 = Em Aberto, 1 = Pago e 2 = Cancelado).
 
-* GET /pedido/{id}: Retorna um pedido específico pelo ID.
+* GET /api/pedido/{id}: Retorna um pedido específico pelo ID.
 
-* PUT /pedido/{id}/editar: Atualiza um pedido existente pelo ID.
+* PUT /api/pedido/{id}/editar: Atualiza um pedido existente pelo ID. Campos: cliente_id, produto_id, status é opcional pois o default é 0 (0 = Em Aberto, 1 = Pago e 2 = Cancelado).
 
-* DELETE /pedido/{id}/deletar: Remove fisicamente um pedido pelo ID.
+* DELETE /api/pedido/{id}/deletar: Remove fisicamente um pedido pelo ID.
 
 *Parâmetros de Paginação e Filtro*
-* GET /pedidos?limit={limit}&page={page}&status={status}: Retorna pedidos paginados com limite e página especificados. Você pode opcionalmente filtrar por status, id do cliente ou id do produto.
+* GET /api/pedidos?limit={limit}&page={page}&status={status}: Retorna pedidos paginados com limite e página especificados. Você pode opcionalmente filtrar por status e/ou id do cliente e/ou id do produto.
