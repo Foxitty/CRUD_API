@@ -1,13 +1,13 @@
 Sistema de Pedidos com CRUD (CodeIgniter 4)
 ===
 
-    Este projeto é um exemplo de um sistema de pedidos implementado utilizando o framework CodeIgniter 4. Ele inclui operações básicas de CRUD (Create, Read, Update, Delete) para pedidos, clientes e produtos, usando um banco de dados MySQL.
+ Este projeto é um exemplo de um sistema de pedidos implementado utilizando o framework CodeIgniter 4. Ele inclui operações básicas de CRUD (Create, Read, Update, Delete) para pedidos, clientes e produtos, usando um banco de dados MySQL.
 
 ## Pré-requisitos
-    Antes de começar, certifique-se de ter instalado em seu ambiente de desenvolvimento:
+ Antes de começar, certifique-se de ter instalado em seu ambiente de desenvolvimento:
     
-    PHP 7.4 
-    MySQL
+* PHP 7.4 
+* MySQL
 
 ## Instalação
 **Clonar o repositório:**
@@ -16,27 +16,27 @@ Sistema de Pedidos com CRUD (CodeIgniter 4)
 
 **Instale as Dependências**
 
-    Certifique-se de ter as dependências necessárias instaladas via Composer:
+ Certifique-se de ter as dependências necessárias instaladas via Composer:
     
     composer require firebase/php-jwt
 
 **Configurar o ambiente:**
     
-    Copie o arquivo .env.example para .env e configure-o com suas credenciais de banco de dados:
-    
-    cp .env.example .env
-    Configure as variáveis de ambiente necessárias no arquivo .env (como banco de dados, URL base, etc).
+ Copie o arquivo .env.example para .env e configure-o com suas credenciais de banco de dados:
+ 
+ Configure as variáveis de ambiente necessárias no arquivo .env (como banco de dados, URL base, etc).
 
 **Executar as migrações do banco de dados:**
     
-    Execute as migrações para criar as tabelas necessárias no banco de dados:
+ Execute as migrações para criar as tabelas necessárias no banco de dados:
     
     php spark migrate
-    Isso criará as tabelas pedidos, clientes, produtos e suas respectivas estruturas no banco de dados configurado.
+    
+ Isso criará as tabelas pedidos, clientes, produtos e suas respectivas estruturas no banco de dados configurado.
 
 **Iniciar o servidor de desenvolvimento:**
 
-    Use o comando abaixo para iniciar o servidor de desenvolvimento do CodeIgniter:
+ Use o comando abaixo para iniciar o servidor de desenvolvimento do CodeIgniter:
 
     php spark serve
 
@@ -44,7 +44,7 @@ Sistema de Pedidos com CRUD (CodeIgniter 4)
 
 **Instale o Postman**
 
-    Se ainda não tiver, instale o Postman em seu ambiente de desenvolvimento.
+ Se ainda não tiver, instale o Postman em seu ambiente de desenvolvimento.
 
 **Configuração de Requisições no Postman**
 
