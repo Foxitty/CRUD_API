@@ -89,15 +89,31 @@ Certifique-se de configurar corretamente o JWT_SECRET no seu arquivo .env. Pode 
 
 **A API possui os seguintes endpoints principais:**
 
+* Em cada Rota ir em Authorization, depois Auth Token selecione Bearer Token e em token, cole o token gerado acima.
+
 **Clientes**
 
 * GET /api/clientes: Retorna todos os clientes cadastrados.
 
 * POST /api/cliente/novo: Cria um novo cliente. Campos: cpf_cnpj, nome_razao_social, status é opcional pois o default é 1 (1 = ativo e 0 = inativo).
+    Na aba Body: Selecione raw e escolha JSON (application/json). Insira:
+    {
+    "parametros": {
+        "cpf_cnpj": "78.404.961/0001-59",
+        "nome_razao_social": "João da Silva" 
+        }
+    }
 
 * GET /api/cliente/{id}: Retorna um cliente específico pelo ID.
 
 * PUT /api/cliente/{id}/editar: Atualiza um cliente existente pelo ID. Campos: cpf_cnpj, nome_razao_social, status é opcional pois o default é 1 (1 = ativo e 0 = inativo).
+   Na aba Body: Selecione raw e escolha JSON (application/json). Insira:
+    {
+    "parametros": {
+        "cpf_cnpj": "78.404.961/0001-59",
+        "nome_razao_social": "João da Silva Oliveira"
+        }
+    }
 
 * PUT /api/cliente/{id}/deletar: Faz a remoção lógica de um cliente pelo ID colocando status = 0 (inativo).
 
@@ -110,10 +126,24 @@ Certifique-se de configurar corretamente o JWT_SECRET no seu arquivo .env. Pode 
 * GET /api/produtos: Retorna todos os produtos cadastrados.
 
 * POST /api/produto/novo: Cria um novo produto. Campos: nome, preco, status é opcional pois o default é 1 (1 = ativo e 0 = inativo).
+   Na aba Body: Selecione raw e escolha JSON (application/json). Insira:
+    {
+    "parametros": {
+        "nome": "chave",
+        "preco": "14.00"
+        }
+    }
 
 * GET /api/produto/{id}: Retorna um produto específico pelo ID.
 
 * PUT /api/produto/{id}/editar: Atualiza um produto existente pelo ID. Campos: nome, preco, status é opcional pois o default é 1 (1 = ativo e 0 = inativo).
+   Na aba Body: Selecione raw e escolha JSON (application/json). Insira:
+    {
+    "parametros": {
+        "nome": "chave de fenda",
+        "preco": "18.00"
+        }
+    }
 
 * PUT /api/produto/{id}/deletar: Faz a remoção lógica de um produto pelo ID colocando status = 0 (inativo).
 
@@ -126,10 +156,26 @@ Certifique-se de configurar corretamente o JWT_SECRET no seu arquivo .env. Pode 
 * GET /api/pedidos: Retorna todos os pedidos cadastrados.
 
 * POST /api/pedido/novo: Cria um novo pedido. Campos: cliente_id, produto_id, status é opcional pois o default é 0 (0 = Em Aberto, 1 = Pago e 2 = Cancelado).
+   Na aba Body: Selecione raw e escolha JSON (application/json). Insira:
+    {
+    "parametros": {
+        "cliente_id": 1,
+        "produto_id": 1
+        }
+    }
+
 
 * GET /api/pedido/{id}: Retorna um pedido específico pelo ID.
 
 * PUT /api/pedido/{id}/editar: Atualiza um pedido existente pelo ID. Campos: cliente_id, produto_id, status é opcional pois o default é 0 (0 = Em Aberto, 1 = Pago e 2 = Cancelado).
+   Na aba Body: Selecione raw e escolha JSON (application/json). Insira:
+    {
+    "parametros": {
+        "cliente_id": 1,
+        "produto_id": 1,
+        "status": 1
+        }
+    }
 
 * DELETE /api/pedido/{id}/deletar: Remove fisicamente um pedido pelo ID.
 

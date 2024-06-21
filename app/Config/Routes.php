@@ -16,14 +16,14 @@ $routes->group('api', ['filter' => 'jwtauth'], function ($routes) {
     $routes->post('cliente/novo', 'ClienteController::create');
     $routes->get('cliente/(:any)', 'ClienteController::read/$1');
     $routes->put('cliente/(:any)/editar', 'ClienteController::update/$1');
-    $routes->delete('cliente/(:any)/deletar', 'ClienteController::delete/$1');
+    $routes->put('cliente/(:any)/deletar', 'ClienteController::delete/$1');
 
     // Rotas de produto
     $routes->get('produtos', 'ProdutoController::list');
     $routes->post('produto/novo', 'ProdutoController::create');
     $routes->get('produto/(:any)', 'ProdutoController::read/$1');
     $routes->put('produto/(:any)/editar', 'ProdutoController::update/$1');
-    $routes->delete('produto/(:any)/deletar', 'ProdutoController::delete/$1');
+    $routes->put('produto/(:any)/deletar', 'ProdutoController::delete/$1');
 
     // Rotas de pedido
     $routes->get('pedidos', 'PedidoController::list');
