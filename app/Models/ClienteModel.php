@@ -16,7 +16,7 @@ class ClienteModel extends Model
     protected $updatedField = 'updated_at';
     protected $validationRules = [
         'cpf_cnpj' => 'required|is_unique[clientes.cpf_cnpj]',
-        'nome_razao_social' => 'required|alpha_space|min_length[3]|max_length[255]'
+        'nome_razao_social' => 'required|string|min_length[3]|max_length[255]'
     ];
 
     protected $validationMessages = [
