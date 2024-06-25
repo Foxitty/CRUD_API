@@ -156,7 +156,8 @@ Certifique-se de configurar corretamente o JWT_SECRET no seu arquivo .env. Pode 
 * GET /api/pedidos: Retorna todos os pedidos cadastrados.
 
 * POST /api/pedido/novo: Cria um novo pedido. Campos: cliente_id, produto_id, status é opcional pois o default é 0 (0 = Em Aberto, 1 = Pago e 2 = Cancelado).
-   Na aba Body: Selecione raw e escolha JSON (application/json). Insira:
+
+Na aba Body: Selecione raw e escolha JSON (application/json). Insira:
     {
     "parametros": {
         "cliente_id": 1,
